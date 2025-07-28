@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriMap Pro - Smart Agricultural Dashboard</title>
+    <link rel="stylesheet" href="f.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loading-container">
+            <div class="loader">
+                <div class="farmer-animation">🌾</div>
+                <div class="loading-text">Loading AgriMap Pro...</div>
+                <div class="loading-bar">
+                    <div class="loading-progress"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>AgriMap Pro</h1>
+                    <span>Smart Farming Solutions</span>
+                </div>
+            </a>
+            
+            <nav class="navbar">
+                <a href="#dashboard" class="nav-link active">
+                    <i class="fas fa-chart-line"></i>
+                    Dashboard
+                </a>
+                <a href="#maps" class="nav-link">
+                    <i class="fas fa-map"></i>
+                    Maps
+                </a>
+                <a href="#tools" class="nav-link">
+                    <i class="fas fa-tools"></i>
+                    Tools
+                </a>
+                <a href="#analytics" class="nav-link">
+                    <i class="fas fa-analytics"></i>
+                    Analytics
+                </a>
+            </nav>
+            
+            <div class="nav-actions">
+                <button class="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-sun"></i>
+                </button>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background">
+            <div class="hero-particles"></div>
+            <div class="hero-gradient"></div>
+        </div>
+        
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-badge">
+                    <i class="fas fa-leaf"></i>
+                    <span>Advanced Agricultural Technology</span>
+                </div>
+                
+                <h1 class="hero-title">
+                    Transform Your Farm with <span class="highlight">Smart Technology</span>
+                </h1>
+                
+                <p class="hero-subtitle">
+                    Harness the power of satellite imagery, AI analytics, and real-time monitoring to maximize yields, optimize resources, and make data-driven farming decisions.
+                </p>
+                
+                <div class="hero-actions">
+                    <a href="#dashboard" class="cta-button primary">
+                        <i class="fas fa-rocket"></i>
+                        Get Started
+                    </a>
+                    <a href="#demo" class="cta-button secondary">
+                        <i class="fas fa-play"></i>
+                        Watch Demo
+                    </a>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number counter" data-target="10000">0</div>
+                        <div class="stat-label">Farmers Served</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number counter" data-target="50000">0</div>
+                        <div class="stat-label">Acres Monitored</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number counter" data-target="25">0</div>
+                        <div class="stat-label">% Yield Increase</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="floating-elements">
+                    <div class="floating-card">
+                        <i class="fas fa-thermometer-half"></i>
+                        <div class="card-content">
+                            <div class="card-title">Temperature</div>
+                            <div class="card-value">28°C</div>
+                        </div>
+                    </div>
+                    <div class="floating-card">
+                        <i class="fas fa-tint"></i>
+                        <div class="card-content">
+                            <div class="card-title">Soil Moisture</div>
+                            <div class="card-value">72%</div>
+                        </div>
+                    </div>
+                    <div class="floating-card">
+                        <i class="fas fa-chart-line"></i>
+                        <div class="card-content">
+                            <div class="card-title">Crop Health</div>
+                            <div class="card-value">Excellent</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="dashboard-section">
+        <div class="section-header">
+            <h2>Comprehensive Farm Dashboard</h2>
+            <p>Monitor your agricultural operations with real-time insights and advanced analytics</p>
+        </div>
+        
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-icon">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                <div class="metric-content">
+                    <div class="metric-value counter" data-target="1247">0</div>
+                    <div class="metric-label">Total Crops Planted</div>
+                    <div class="metric-trend up">
+                        <i class="fas fa-arrow-up"></i>
+                        +12% this month
+                    </div>
+                </div>
+            </div>
+            
+            <div class="metric-card">
+                <div class="metric-icon">
+                    <i class="fas fa-tint"></i>
+                </div>
+                <div class="metric-content">
+                    <div class="metric-value">72%</div>
+                    <div class="metric-label">Average Soil Moisture</div>
+                    <div class="metric-trend stable">
+                        <i class="fas fa-minus"></i>
+                        Stable
+                    </div>
+                </div>
+            </div>
+            
+            <div class="metric-card">
+                <div class="metric-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="metric-content">
+                    <div class="metric-value counter" data-target="89">0</div>
+                    <div class="metric-label">Crop Health Score</div>
+                    <div class="metric-trend up">
+                        <i class="fas fa-arrow-up"></i>
+                        +5% improvement
+                    </div>
+                </div>
+            </div>
+            
+            <div class="metric-card">
+                <div class="metric-icon">
+                    <i class="fas fa-thermometer-half"></i>
+                </div>
+                <div class="metric-content">
+                    <div class="metric-value">28°C</div>
+                    <div class="metric-label">Current Temperature</div>
+                    <div class="metric-trend down">
+                        <i class="fas fa-arrow-down"></i>
+                        -2°C from yesterday
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Maps Section -->
+    <section id="maps" class="maps-section">
+        <div class="section-header">
+            <h2>Interactive Farm Mapping</h2>
+            <p>Visualize your fields with precision satellite imagery and AI-powered analytics</p>
+        </div>
+        
+        <div class="maps-container">
+            <div class="map-panel">
+                <div class="panel-header">
+                    <div class="panel-title">
+                        <i class="fas fa-globe"></i>
+                        <h3>Soil Analysis Map</h3>
+                    </div>
+                    <div class="control-group">
+                        <button class="control-btn active" data-layer="ph">
+                            <i class="fas fa-flask"></i>
+                            pH Level
+                        </button>
+                        <button class="control-btn" data-layer="moisture">
+                            <i class="fas fa-tint"></i>
+                            Moisture
+                        </button>
+                        <button class="control-btn" data-layer="nutrients">
+                            <i class="fas fa-leaf"></i>
+                            Nutrients
+                        </button>
+                    </div>
+                </div>
+                <div class="map-wrapper">
+                    <div id="soilMap" class="map-container"></div>
+                    <div class="map-overlay">
+                        <div class="legend">
+                            <h4>Soil Quality</h4>
+                            <div class="legend-items">
+                                <div class="legend-item">
+                                    <div class="legend-color poor"></div>
+                                    <span>Poor (0-25%)</span>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-color fair"></div>
+                                    <span>Fair (26-50%)</span>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-color good"></div>
+                                    <span>Good (51-75%)</span>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-color excellent"></div>
+                                    <span>Excellent (76-100%)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="map-panel">
+                <div class="panel-header">
+                    <div class="panel-title">
+                        <i class="fas fa-cloud-sun"></i>
+                        <h3>Weather Forecast Map</h3>
+                    </div>
+                    <div class="control-group">
+                        <button class="control-btn active" data-weather="current">
+                            <i class="fas fa-clock"></i>
+                            Current
+                        </button>
+                        <button class="control-btn" data-weather="forecast">
+                            <i class="fas fa-calendar"></i>
+                            7-Day
+                        </button>
+                        <button class="control-btn" data-weather="radar">
+                            <i class="fas fa-satellite"></i>
+                            Radar
+                        </button>
+                    </div>
+                </div>
+                <div class="map-wrapper">
+                    <div id="weatherMap" class="map-container"></div>
+                    <div class="weather-sidebar">
+                        <div class="current-weather">
+                            <h4>Current Weather</h4>
+                            <div class="weather-main">
+                                <i class="fas fa-sun weather-icon"></i>
+                                <div class="weather-temp">28°C</div>
+                            </div>
+                            <div class="weather-details">
+                                <div class="weather-detail">
+                                    <i class="fas fa-eye"></i>
+                                    <span>Visibility: 10 km</span>
+                                </div>
+                                <div class="weather-detail">
+                                    <i class="fas fa-tint"></i>
+                                    <span>Humidity: 65%</span>
+                                </div>
+                                <div class="weather-detail">
+                                    <i class="fas fa-wind"></i>
+                                    <span>Wind: 12 km/h</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="forecast">
+                            <h4>7-Day Forecast</h4>
+                            <div class="forecast-items">
+                                <div class="forecast-item">
+                                    <span class="day">Today</span>
+                                    <i class="fas fa-sun"></i>
+                                    <span class="temp">28°/22°</span>
+                                </div>
+                                <div class="forecast-item">
+                                    <span class="day">Tomorrow</span>
+                                    <i class="fas fa-cloud-sun"></i>
+                                    <span class="temp">26°/20°</span>
+                                </div>
+                                <div class="forecast-item">
+                                    <span class="day">Tuesday</span>
+                                    <i class="fas fa-cloud-rain"></i>
+                                    <span class="temp">24°/18°</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section id="tools" class="tools-section">
+        <div class="section-header">
+            <h2>Smart Farming Tools</h2>
+            <p>Optimize your agricultural operations with AI-powered precision tools</p>
+        </div>
+        
+        <div class="tools-grid">
+            <div class="tool-card">
+                <div class="tool-icon">
+                    <i class="fas fa-calculator"></i>
+                </div>
+                <div class="tool-content">
+                    <h3>Crop Calculator</h3>
+                    <p>Calculate optimal planting density, fertilizer requirements, and expected yields with AI precision</p>
+                    <div class="tool-features">
+                        <span class="feature">Yield Estimation</span>
+                        <span class="feature">Cost Analysis</span>
+                        <span class="feature">ROI Calculation</span>
+                    </div>
+                </div>
+                <div class="tool-action">
+                    <button class="tool-btn" data-tool="calculator">
+                        <i class="fas fa-rocket"></i>
+                        Launch Calculator
+                    </button>
+                </div>
+            </div>
+            
+            <div class="tool-card">
+                <div class="tool-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <div class="tool-content">
+                    <h3>Smart Planting Schedule</h3>
+                    <p>Get personalized planting recommendations based on weather patterns and soil conditions</p>
+                    <div class="tool-features">
+                        <span class="feature">Weather Integration</span>
+                        <span class="feature">Soil Analysis</span>
+                        <span class="feature">Crop Rotation</span>
+                    </div>
+                </div>
+                <div class="tool-action">
+                    <button class="tool-btn" data-tool="schedule">
+                        <i class="fas fa-calendar"></i>
+                        View Schedule
+                    </button>
+                </div>
+            </div>
+            
+            <div class="tool-card">
+                <div class="tool-icon">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <div class="tool-content">
+                    <h3>Yield Predictor</h3>
+                    <p>Forecast crop yields using machine learning algorithms and historical data analysis</p>
+                    <div class="tool-features">
+                        <span class="feature">ML Algorithms</span>
+                        <span class="feature">Historical Data</span>
+                        <span class="feature">Market Trends</span>
+                    </div>
+                </div>
+                <div class="tool-action">
+                    <button class="tool-btn" data-tool="predictor">
+                        <i class="fas fa-chart-line"></i>
+                        Predict Yields
+                    </button>
+                </div>
+            </div>
+            
+            <div class="tool-card">
+                <div class="tool-icon">
+                    <i class="fas fa-bug"></i>
+                </div>
+                <div class="tool-content">
+                    <h3>Pest & Disease Monitor</h3>
+                    <p>Early warning system for pest and disease outbreaks with satellite imagery analysis</p>
+                    <div class="tool-features">
+                        <span class="feature">Early Detection</span>
+                        <span class="feature">Satellite Imaging</span>
+                        <span class="feature">Treatment Plans</span>
+                    </div>
+                </div>
+                <div class="tool-action">
+                    <button class="tool-btn" data-tool="monitor">
+                        <i class="fas fa-search"></i>
+                        Start Monitoring
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Analytics Section -->
+    <section id="analytics" class="analytics-section">
+        <div class="section-header">
+            <h2>Advanced Analytics</h2>
+            <p>Deep insights into your farming operations with comprehensive data visualization</p>
+        </div>
+        
+        <div class="analytics-grid">
+            <div class="analytics-card">
+                <div class="card-header">
+                    <h3>Crop Performance Trends</h3>
+                    <div class="card-actions">
+                        <button class="action-btn" data-period="week">Week</button>
+                        <button class="action-btn" data-period="month">Month</button>
+                        <button class="action-btn" data-period="year">Year</button>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="cropChart"></canvas>
+                </div>
+                <div class="chart-legend">
+                    <div class="legend-item">
+                        <div class="legend-dot" style="background: #2ecc71;"></div>
+                        <span>Wheat</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-dot" style="background: #3498db;"></div>
+                        <span>Rice</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-dot" style="background: #f39c12;"></div>
+                        <span>Corn</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="analytics-card">
+                <div class="card-header">
+                    <h3>Resource Usage</h3>
+                </div>
+                <div class="resource-metrics">
+                    <div class="resource-item">
+                        <div class="resource-icon">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <div class="resource-info">
+                            <div class="resource-label">Water Usage</div>
+                            <div class="resource-value">2,450 L/day</div>
+                            <div class="resource-bar">
+                                <div class="resource-progress" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-item">
+                        <div class="resource-icon">
+                            <i class="fas fa-flask"></i>
+                        </div>
+                        <div class="resource-info">
+                            <div class="resource-label">Fertilizer Usage</div>
+                            <div class="resource-value">125 kg/month</div>
+                            <div class="resource-bar">
+                                <div class="resource-progress" style="width: 60%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-item">
+                        <div class="resource-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="resource-info">
+                            <div class="resource-label">Energy Consumption</div>
+                            <div class="resource-value">1,850 kWh</div>
+                            <div class="resource-bar">
+                                <div class="resource-progress" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <i class="fas fa-seedling"></i>
+                    AgriMap Pro
+                </div>
+                <p>Empowering farmers with cutting-edge technology for sustainable and profitable agriculture.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Products</h4>
+                <ul>
+                    <li><a href="#">Crop Monitoring</a></li>
+                    <li><a href="#">Soil Analysis</a></li>
+                    <li><a href="#">Weather Forecasting</a></li>
+                    <li><a href="#">Yield Prediction</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">API Reference</a></li>
+                    <li><a href="#">Case Studies</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>agri@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+91 1234567890</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Nashik , MH</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 AgriMap Pro. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="f.js"></script>
+</body>
+</html>
